@@ -3,6 +3,8 @@ import express from 'express';
 import tasksRouter from './api/tasks';
 import './db';
 import usersRouter from './api/users';
+// other imports
+import cors from 'cors';
 
 dotenv.config();
 
@@ -31,3 +33,6 @@ app.listen(port, () => {
 
 //Users router
 app.use('/api/users', usersRouter);
+
+// Enable CORS for all requests
+app.use(cors());
