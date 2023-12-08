@@ -3,4 +3,26 @@ export const getMovies = async () => {
       `https://api.themoviedb.org/3/discover/movie?api_key=3ec695f24203f51c5771089eb1781e6a&language=en-US&include_adult=false&page=1`
     )
     return response.json()
-  };
+};
+
+  export const login = async (username, password) => {
+    const response = await fetch('http://localhost:8080/api/users', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    });
+    return response.json();
+};
+
+export const signup = async (username, password) => {
+    const response = await fetch('http://localhost:8080/api/users?action=register', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    });
+    return response.json();
+};
